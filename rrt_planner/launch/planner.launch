@@ -1,0 +1,19 @@
+<launch>
+  <arg name="no_of_collision" default="10" />
+  <arg name="startx" default="2" />
+  <arg name="starty" default="4" />
+  <arg name="goalx" default="18" />
+  <arg name="goaly" default="19" />
+
+  <param name="no_of_collision" type="double" value="$(arg no_of_collision)" />
+  <param name="startx" type="double" value="$(arg startx)" />
+  <param name="starty" type="double" value="$(arg starty)" />
+  <param name="goalx" type="double" value="$(arg goalx)" />
+  <param name="goaly" type="double" value="$(arg goaly)" />
+
+  <node name="rrt" pkg="rrt_planner"
+    type="rrt" output="screen" />
+
+  <node pkg="rviz" type="rviz" name="rviz"
+    args="-d $(find rrt_planner)/rviz/visual_waypoint.rviz" />
+</launch>
